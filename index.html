@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ОК/БАНКРОТ - Списание долгов с гарантией</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blue: {
+              50: '#EFF6FF',
+              100: '#DBEAFE',
+              200: '#BFDBFE',
+              300: '#93C5FD',
+              400: '#60A5FA',
+              500: '#0F52BA',
+              600: '#0C4296',
+              700: '#1D4ED8',
+              800: '#1E40AF',
+              900: '#1E3A8A',
+            },
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen font-sans antialiased text-slate-800 bg-slate-50">
+
+  <!-- NAVBAR (FLOATING ISLAND) -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent py-6">
+    <div id="nav-container"
+      class="container mx-auto px-6 flex justify-between items-center transition-all duration-500">
+
+      <!-- Brand & City Mobile -->
+      <div class="flex items-center gap-6 lg:gap-10">
+        <div class="flex flex-col cursor-pointer hover:opacity-80 transition-opacity"
+          onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          <span class="text-2xl font-black tracking-tighter text-blue-600 leading-none">ОК/БАНКРОТ</span>
+        </div>
+        <div
+          class="hidden lg:flex items-center gap-2 bg-slate-100/80 px-4 py-2 rounded-full cursor-pointer hover:bg-slate-200 transition-all btn-menu-open">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-500"></i>
+          <span class="text-xs font-bold city-name-placeholder">Краснодар</span>
+          <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i>
+        </div>
+      </div>
+
+      <!-- Desktop Links -->
+      <div class="hidden xl:flex items-center gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
+        <a href="index.html#about" class="hover:text-blue-600 transition-colors">О компании</a>
+
+        <!-- DROPDOWN -->
+        <div class="group relative py-6">
+          <button
+            class="hover:text-blue-600 transition-colors flex items-center gap-1 uppercase tracking-[0.2em] font-bold">
+            Услуги <i data-lucide="chevron-down" class="w-3 h-3 group-hover:rotate-180 transition-transform"></i>
+          </button>
+
+          <div
+            class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 w-72 bg-white rounded-2xl shadow-xl shadow-blue-900/10 border border-slate-100 p-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <!-- Category 1 -->
+            <div class="dropdown-item relative group/sub">
+              <button
+                class="w-full text-left px-5 py-3 rounded-xl hover:bg-slate-50 text-slate-700 flex justify-between items-center transition-colors">
+                <span class="font-bold text-xs uppercase tracking-widest text-slate-800">Гражданам</span>
+                <i data-lucide="chevron-right" class="w-3 h-3 text-slate-400"></i>
+              </button>
+              <div
+                class="dropdown-submenu absolute top-0 left-full w-72 bg-white rounded-2xl shadow-xl shadow-blue-900/10 border border-slate-100 p-2 ml-2 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-2 group-hover/sub:translate-x-0">
+                <a href="bankruptcy-individuals.html"
+                  class="block px-5 py-3 rounded-xl hover:bg-slate-50 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Банкротство
+                  граждан и ИП</a>
+                <a href="debtors-help.html"
+                  class="block px-5 py-3 rounded-xl hover:bg-slate-50 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Помощь
+                  должникам</a>
+              </div>
+            </div>
+
+            <div class="h-px bg-slate-100 my-1 mx-2"></div>
+
+            <!-- Category 2 -->
+            <div class="dropdown-item relative group/sub">
+              <button
+                class="w-full text-left px-5 py-3 rounded-xl hover:bg-slate-50 text-slate-700 flex justify-between items-center transition-colors">
+                <span class="font-bold text-xs uppercase tracking-widest text-slate-800">Бизнесу</span>
+                <i data-lucide="chevron-right" class="w-3 h-3 text-slate-400"></i>
+              </button>
+              <div
+                class="dropdown-submenu absolute top-0 left-full w-72 bg-white rounded-2xl shadow-xl shadow-blue-900/10 border border-slate-100 p-2 ml-2 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-2 group-hover/sub:translate-x-0">
+                <a href="bankruptcy-legal.html"
+                  class="block px-5 py-3 rounded-xl hover:bg-slate-50 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Банкротство
+                  юридических лиц</a>
+                <a href="debt-collection.html"
+                  class="block px-5 py-3 rounded-xl hover:bg-slate-50 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Взыскание
+                  задолженности</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="index.html#cases" class="hover:text-blue-600 transition-colors">Результаты</a>
+        <a href="index.html#contacts" class="hover:text-blue-600 transition-colors">Контакты</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-4 lg:gap-6">
+        <div class="hidden md:flex flex-col items-end">
+          <a href="#" class="city-phone-placeholder text-base font-bold text-slate-900 tracking-tighter">8 861
+            203-47-40</a>
+          <div class="flex items-center gap-1.5">
+            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+            <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Юрист на линии</span>
+          </div>
+        </div>
+        <button
+          class="btn-callback bg-slate-900 text-white px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-blue-600 transition-all shadow-lg shadow-slate-900/10 active:scale-95">
+          Аудит
+        </button>
+        <button class="lg:hidden p-2 text-slate-600 btn-menu-open bg-slate-100 rounded-full">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-40 overflow-hidden">
+    <div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-blue-50/40 to-transparent -z-10"></div>
+    <div class="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] bg-blue-400/5 blur-[150px] rounded-full -z-10"></div>
+
+    <div class="container mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-20 items-center">
+        <div class="animate-fade-in-up">
+          <div class="flex items-center gap-3 mb-8">
+            <span
+              class="px-3 py-1 bg-blue-100 text-blue-600 text-[10px] font-black uppercase tracking-widest rounded-md italic">127-ФЗ</span>
+            <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400">Ваша финансовая защита в г.
+              <span class="city-name-placeholder">Краснодар</span></span>
+          </div>
+          <h1 class="text-5xl md:text-7xl xl:text-8xl font-black text-slate-900 leading-[1.05] tracking-tight mb-8">
+            Спишем долги <br />
+            <span class="text-blue-600 italic">с гарантией в договоре.</span>
+          </h1>
+          <p class="text-xl text-slate-500 font-medium leading-relaxed max-w-xl mb-12">
+            Защитим имущество, остановим звонки коллекторов и официально аннулируем ваши задолженности в <span
+              class="city-courts-placeholder">суде</span>.
+          </p>
+
+          <div class="flex flex-wrap gap-6 items-center">
+            <button
+              class="btn-callback bg-slate-900 text-white px-12 py-6 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-blue-600 transition-all shadow-2xl shadow-slate-900/20 active:scale-95">
+              Оставить заявку
+            </button>
+            <div class="flex items-center gap-5 border-l border-slate-200 pl-8">
+              <div class="flex -space-x-3">
+                <div class="w-12 h-12 rounded-full border-2 border-white overflow-hidden bg-slate-100 shadow-sm"><img
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=r1" alt="Lawyer" /></div>
+                <div class="w-12 h-12 rounded-full border-2 border-white overflow-hidden bg-slate-100 shadow-sm"><img
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=r2" alt="Lawyer" /></div>
+                <div class="w-12 h-12 rounded-full border-2 border-white overflow-hidden bg-slate-100 shadow-sm"><img
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=r3" alt="Lawyer" /></div>
+                <div class="w-12 h-12 rounded-full border-2 border-white overflow-hidden bg-slate-100 shadow-sm"><img
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=r4" alt="Lawyer" /></div>
+              </div>
+              <div class="text-xs text-slate-400 font-medium">
+                <span class="font-bold text-slate-900 text-sm">4.9/5</span> оценка <br /> на основе 3.4к отзывов
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <div class="p-4 bg-white/50 rounded-2xl backdrop-blur-sm border border-white/50">
+              <div class="text-3xl font-black text-slate-900 city-casesInRegion-placeholder">0+</div>
+              <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Дел в регионе</div>
+            </div>
+            <div class="p-4 bg-white/50 rounded-2xl backdrop-blur-sm border border-white/50">
+              <div class="text-3xl font-black text-slate-900 city-totalSaved-placeholder">0 ₽</div>
+              <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Списано долгов</div>
+            </div>
+            <div class="p-4 bg-white/50 rounded-2xl backdrop-blur-sm border border-white/50 col-span-2 hidden sm:block">
+              <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1 mb-2">Наши специалисты
+              </div>
+              <div id="team-container" class="grid grid-cols-1 gap-2">
+                <!-- JS Render -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative lg:pl-12 animate-fade-in-up" style="animation-delay: 0.3s">
+          <div id="quiz-container"
+            class="bg-white rounded-[2rem] shadow-2xl shadow-blue-900/5 p-8 lg:p-12 border border-slate-100 overflow-hidden relative">
+            <!-- JS Quiz Render -->
+          </div>
+
+          <div
+            class="absolute -bottom-8 -left-8 bg-white p-6 rounded-[2.5rem] shadow-2xl border border-slate-50 flex items-center gap-5 hidden md:flex hover:translate-y-[-5px] transition-transform">
+            <div
+              class="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-500/30">
+              <i data-lucide="shield-check" class="w-7 h-7"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900 uppercase tracking-widest italic leading-none mb-1">ФЗ-127
+                Compliance</div>
+              <div class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">100% Легальная процедура
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENTO TRUST GRID -->
+  <section id="about" class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-20 max-w-3xl mx-auto">
+        <span class="text-blue-500 font-bold uppercase tracking-[0.4em] text-[10px] mb-5 block">Почему ОК/БАНКРОТ</span>
+        <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 tracking-tighter">Надежность, подтвержденная
+          <br /> годами практики
+        </h2>
+        <p class="text-slate-500 text-lg leading-relaxed">Мы не просто юридическая фирма, а технологическая платформа,
+          которая делает закон доступным для каждого жителя России.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div
+          class="group p-10 rounded-[3rem] bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-blue-600 mb-10 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+              <i data-lucide="scale" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-2xl font-black text-slate-900 mb-5 tracking-tight">Лидеры рынка РФ</h4>
+            <p class="text-slate-500 font-medium leading-relaxed">10% всех банкротств в России проходят через нашу сеть.
+            </p>
+          </div>
+          <button
+            class="btn-callback mt-8 pt-6 border-t border-slate-200/50 flex items-center gap-2 text-[10px] font-black uppercase text-blue-600 tracking-widest opacity-0 group-hover:opacity-100 transition-opacity w-full text-left">
+            <span>Подробнее</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div
+          class="group p-10 rounded-[3rem] bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-blue-600 mb-10 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+              <i data-lucide="shield-alert" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-2xl font-black text-slate-900 mb-5 tracking-tight">Антиколлектор</h4>
+            <p class="text-slate-500 font-medium leading-relaxed">Защита от звонков и психологического давления с 1-го
+              дня.</p>
+          </div>
+          <button
+            class="btn-callback mt-8 pt-6 border-t border-slate-200/50 flex items-center gap-2 text-[10px] font-black uppercase text-blue-600 tracking-widest opacity-0 group-hover:opacity-100 transition-opacity w-full text-left">
+            <span>Подробнее</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div
+          class="group p-10 rounded-[3rem] bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-blue-600 mb-10 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+              <i data-lucide="wallet" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-2xl font-black text-slate-900 mb-5 tracking-tight">Рассрочка 0%</h4>
+            <p class="text-slate-500 font-medium leading-relaxed">Доступные платежи от 3 500 ₽/мес. Начинаем работу без
+              предоплаты.</p>
+          </div>
+          <button
+            class="btn-callback mt-8 pt-6 border-t border-slate-200/50 flex items-center gap-2 text-[10px] font-black uppercase text-blue-600 tracking-widest opacity-0 group-hover:opacity-100 transition-opacity w-full text-left">
+            <span>Подробнее</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div
+          class="group p-10 rounded-[3rem] bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-blue-600 mb-10 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+              <i data-lucide="clock" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-2xl font-black text-slate-900 mb-5 tracking-tight">Гарантия списания</h4>
+            <p class="text-slate-500 font-medium leading-relaxed">Возврат 100% средств, если долг не будет списан по
+              нашей вине.</p>
+          </div>
+          <button
+            class="btn-callback mt-8 pt-6 border-t border-slate-200/50 flex items-center gap-2 text-[10px] font-black uppercase text-blue-600 tracking-widest opacity-0 group-hover:opacity-100 transition-opacity w-full text-left">
+            <span>Подробнее</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS TABBED SECTION -->
+  <section id="solutions" class="py-24">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row justify-between items-end mb-16 gap-10">
+        <div class="max-w-2xl">
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 tracking-tighter">Решения для ваших финансовых
+            задач</h2>
+          <p class="text-slate-500 text-lg">Каждая ситуация уникальна. Мы подбираем оптимальный правовой сценарий для
+            списания ваших задолженностей.</p>
+        </div>
+        <div class="flex bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
+          <button data-tab="tab-citizens"
+            class="tab-btn px-10 py-4 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all bg-white text-blue-600 shadow-md">
+            Гражданам
+          </button>
+          <button data-tab="tab-business"
+            class="tab-btn px-10 py-4 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all text-slate-400 hover:text-slate-800">
+            Бизнесу
+          </button>
+        </div>
+      </div>
+
+      <!-- CITIZENS TAB -->
+      <div id="tab-citizens" class="tab-content grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group relative overflow-hidden">
+          <div
+            class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-10 group-hover:scale-110 transition-transform">
+            <i data-lucide="heart-handshake" class="w-7 h-7"></i>
+          </div>
+          <h4 class="text-3xl font-black mb-6 leading-tight">Списание <br />всех долгов</h4>
+          <ul class="space-y-5 mb-12 text-slate-500 font-medium italic">
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Полное аннулирование кредитов и МФО</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Защита от коллекторов и приставов</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Снятие арестов с имущества и карт</li>
+          </ul>
+          <button
+            class="btn-callback flex items-center gap-3 text-[11px] font-black text-blue-600 uppercase tracking-widest">Бесплатный
+            расчет <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        </div>
+        <div
+          class="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group relative overflow-hidden">
+          <div
+            class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-10 group-hover:scale-110 transition-transform">
+            <i data-lucide="building-2" class="w-7 h-7"></i>
+          </div>
+          <h4 class="text-3xl font-black mb-6 leading-tight">Сохранение <br />жилья</h4>
+          <ul class="space-y-5 mb-12 text-slate-500 font-medium italic">
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Банкротство с сохранением ипотеки</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Юридическая защита ед. жилья</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Новые регламенты Верховного суда</li>
+          </ul>
+          <button
+            class="btn-callback flex items-center gap-3 text-[11px] font-black text-blue-600 uppercase tracking-widest">Проверить
+            объект <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        </div>
+        <div
+          class="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group relative overflow-hidden">
+          <div
+            class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-10 group-hover:scale-110 transition-transform">
+            <i data-lucide="scale" class="w-7 h-7"></i>
+          </div>
+          <h4 class="text-3xl font-black mb-6 leading-tight">Банкротство <br />через МФЦ</h4>
+          <ul class="space-y-5 mb-12 text-slate-500 font-medium italic">
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Упрощенная процедура до 1 млн ₽</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Сбор справок и документов за вас</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Контроль сроков публикации в ЕФРСБ</li>
+          </ul>
+          <button
+            class="btn-callback flex items-center gap-3 text-[11px] font-black text-blue-600 uppercase tracking-widest">Подать
+            заявку <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        </div>
+      </div>
+
+      <!-- BUSINESS TAB -->
+      <div id="tab-business" class="tab-content hidden grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group relative overflow-hidden">
+          <div
+            class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-10 group-hover:scale-110 transition-transform">
+            <i data-lucide="navigation" class="w-7 h-7"></i>
+          </div>
+          <h4 class="text-3xl font-black mb-6 leading-tight">Ликвидация <br /> ООО</h4>
+          <ul class="space-y-5 mb-12 text-slate-500 font-medium italic">
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Закрытие компаний с задолженностью</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Прохождение проверок ФНС</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Полная конфиденциальность собственников</li>
+          </ul>
+          <button
+            class="btn-callback flex items-center gap-3 text-[11px] font-black text-blue-600 uppercase tracking-widest">Аудит
+            рисков <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        </div>
+        <div
+          class="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group relative overflow-hidden">
+          <div
+            class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-10 group-hover:scale-110 transition-transform">
+            <i data-lucide="shield-check" class="w-7 h-7"></i>
+          </div>
+          <h4 class="text-3xl font-black mb-6 leading-tight">Субсидиарная <br />защита</h4>
+          <ul class="space-y-5 mb-12 text-slate-500 font-medium italic">
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Защита личного имущества КДЛ</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Оспаривание действий кредиторов</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Разработка стратегии защиты в суде</li>
+          </ul>
+          <button
+            class="btn-callback flex items-center gap-3 text-[11px] font-black text-blue-600 uppercase tracking-widest">Консультация
+            партнера <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        </div>
+        <div
+          class="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group relative overflow-hidden">
+          <div
+            class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-10 group-hover:scale-110 transition-transform">
+            <i data-lucide="search" class="w-7 h-7"></i>
+          </div>
+          <h4 class="text-3xl font-black mb-6 leading-tight">Проверка <br />сделок</h4>
+          <ul class="space-y-5 mb-12 text-slate-500 font-medium italic">
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Анализ рисков оспаривания за 3 года</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Защита добросовестных покупателей</li>
+            <li class="flex gap-4 items-start"><i data-lucide="check-circle-2"
+                class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i> Подготовка базы доказательств</li>
+          </ul>
+          <button
+            class="btn-callback flex items-center gap-3 text-[11px] font-black text-blue-600 uppercase tracking-widest">Оценить
+            риски <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS SECTION -->
+  <section class="py-24 bg-white border-y border-slate-100">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-center gap-24">
+        <div class="lg:w-1/2">
+          <span class="text-blue-500 font-bold uppercase tracking-[0.4em] text-[10px] mb-5 block">Ваш путь к
+            свободе</span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-12 leading-[1.1] tracking-tighter">5 прозрачных
+            шагов <br />к жизни без долгов</h2>
+
+          <div class="space-y-12">
+            <div class="flex gap-8 relative">
+              <div
+                class="flex-shrink-0 w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg shadow-blue-500/30 z-10">
+                1</div>
+              <div class="pt-2">
+                <h5 class="text-2xl font-black mb-3 tracking-tight italic">Бесплатный аудит</h5>
+                <p class="text-slate-500 font-medium leading-relaxed">Проанализируем вашу ситуацию, проверим документы и
+                  дадим 100% гарантию результата.</p>
+              </div>
+            </div>
+            <div class="flex gap-8 relative">
+              <div
+                class="flex-shrink-0 w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg shadow-blue-500/30 z-10">
+                2</div>
+              <div class="pt-2">
+                <h5 class="text-2xl font-black mb-3 tracking-tight italic">Антиколлектор</h5>
+                <p class="text-slate-500 font-medium leading-relaxed">Сразу после подписания договора мы берем всё
+                  общение с кредиторами на себя. Вам больше не будут звонить.</p>
+              </div>
+            </div>
+            <div class="flex gap-8 relative">
+              <div
+                class="flex-shrink-0 w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg shadow-blue-500/30 z-10">
+                3</div>
+              <div class="pt-2">
+                <h5 class="text-2xl font-black mb-3 tracking-tight italic">Сбор документов</h5>
+                <p class="text-slate-500 font-medium leading-relaxed">Мы самостоятельно собираем 90% необходимых справок
+                  через госреестры. Вы не тратите время в очередях.</p>
+              </div>
+            </div>
+            <div class="flex gap-8 relative">
+              <div
+                class="flex-shrink-0 w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg shadow-blue-500/30 z-10">
+                4</div>
+              <div class="pt-2">
+                <h5 class="text-2xl font-black mb-3 tracking-tight italic">Арбитражный суд</h5>
+                <p class="text-slate-500 font-medium leading-relaxed">Наши юристы и арбитражные управляющие представляют
+                  ваши интересы. Ваше присутствие в суде не требуется.</p>
+              </div>
+            </div>
+            <div class="flex gap-8 relative">
+              <div
+                class="flex-shrink-0 w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg shadow-blue-500/30 z-10">
+                5</div>
+              <div class="pt-2">
+                <h5 class="text-2xl font-black mb-3 tracking-tight italic">Определение суда</h5>
+                <p class="text-slate-500 font-medium leading-relaxed">Вы получаете официальное решение о полном списании
+                  всех долгов. Ваша кредитная история обнуляется.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2 relative">
+          <div class="aspect-[4/5] bg-blue-50 rounded-[5rem] overflow-hidden relative shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+              alt="Legal Expert" class="w-full h-full object-cover mix-blend-multiply opacity-90" />
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent"></div>
+          </div>
+
+          <div
+            class="absolute -bottom-12 -left-12 bg-white p-10 rounded-[3.5rem] shadow-2xl border border-slate-50 max-w-sm hidden md:block">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white">
+                <i data-lucide="info" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-black uppercase tracking-widest text-slate-900 italic">Личное
+                обращение</span>
+            </div>
+            <p class="text-sm text-slate-500 font-bold leading-relaxed italic mb-8">«Банкротство — это не поражение, а
+              цивилизованный способ перезагрузки финансов, гарантированный государством».</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden bg-slate-100 border border-slate-200">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Manager" alt="Manager"
+                  class="manager-avatar" />
+              </div>
+              <div>
+                <div class="text-sm font-black text-slate-900 leading-none city-manager-placeholder">Имя</div>
+                <div
+                  class="text-[9px] font-bold text-blue-500 uppercase tracking-widest mt-1 city-managerRole-placeholder">
+                  Роль</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES / RESULTS -->
+  <section id="cases" class="py-24 overflow-hidden">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase tracking-tighter italic">Практика в
+          <span class="city-region-placeholder">регионе</span>
+        </h2>
+        <p class="text-slate-500 text-lg">Каждое дело — это реальная история спасения. Проверьте наши результаты в
+          картотеке арбитражных дел.</p>
+      </div>
+
+      <div id="cases-container" class="flex gap-8 overflow-x-auto pb-12 no-scrollbar px-4">
+        <!-- JS Render Content -->
+      </div>
+
+      <div class="text-center mt-10">
+        <button
+          class="px-8 py-3 bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-slate-200 transition-all">
+          Показать еще 120 кейсов в этом регионе
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contacts" class="pt-24 pb-12 bg-slate-950 text-slate-300">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-20">
+        <!-- Col 1 -->
+        <div class="flex flex-col">
+          <div class="flex flex-col mb-8">
+            <span class="text-4xl font-black tracking-tighter text-white">ОК/БАНКРОТ</span>
+            <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-500 mt-1">Federal Legal
+              Network</span>
+          </div>
+          <p class="text-sm font-medium leading-relaxed text-slate-500 mb-8 max-w-sm">
+            Мы создаем будущее, в котором финансовые ошибки — это решаемая задача, а не пожизненный приговор.
+          </p>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <h6 class="text-[11px] font-black uppercase tracking-[0.3em] text-white mb-8 border-l-2 border-blue-500 pl-3">
+            Гражданам</h6>
+          <ul class="space-y-4">
+            <li><a href="bankruptcy-individuals.html"
+                class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Банкротство физлиц и
+                ИП</a></li>
+            <li><a href="debtors-help.html"
+                class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Помощь должникам</a></li>
+            <li><a href="index.html#"
+                class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Абонентское
+                обслуживание</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <h6 class="text-[11px] font-black uppercase tracking-[0.3em] text-white mb-8 border-l-2 border-blue-500 pl-3">
+            Бизнесу</h6>
+          <ul class="space-y-4">
+            <li><a href="bankruptcy-legal.html"
+                class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Банкротство ООО</a></li>
+            <li><a href="bankruptcy-legal.html"
+                class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Субсидиарная защита</a>
+            </li>
+            <li><a href="debt-collection.html"
+                class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Взыскание
+                задолженности</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
+          <h6 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-6 italic">Филиал г. <span
+              class="city-name-placeholder text-white">Место</span></h6>
+          <ul class="space-y-6">
+            <li class="flex items-start gap-4"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500"></i><span
+                class="text-sm font-medium text-white city-address-placeholder">ул. Адрес</span></li>
+            <li class="flex items-center gap-4"><i data-lucide="phone" class="w-5 h-5 text-blue-500"></i><a href="#"
+                class="city-phone-placeholder text-xl font-black text-white hover:text-blue-400 transition-colors tracking-tight">Телефон</a>
+            </li>
+            <li class="flex items-center gap-4"><i data-lucide="mail" class="w-5 h-5 text-blue-500"></i><a
+                href="mailto:info@okbankrot.ru"
+                class="text-sm font-medium text-white hover:text-blue-400 transition-colors city-email-placeholder">info@okbankrot.ru</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex gap-6">
+          <a href="#"
+            class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all"><i
+              data-lucide="send" class="w-5 h-5"></i></a>
+          <a href="#"
+            class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all"><i
+              data-lucide="message-square" class="w-5 h-5"></i></a>
+        </div>
+        <div class="flex flex-wrap justify-center gap-8">
+          <a href="privacy.html"
+            class="text-[10px] font-bold text-slate-500 uppercase tracking-widest hover:text-white transition-colors">Политика
+            конфиденциальности</a>
+          <a href="terms.html"
+            class="text-[10px] font-bold text-slate-500 uppercase tracking-widest hover:text-white transition-colors">Пользовательское
+            соглашение</a>
+        </div>
+      </div>
+
+      <!-- Disclaimer Bento -->
+      <div class="mt-8 p-6 bg-slate-900/50 rounded-3xl">
+        <p class="text-[10px] text-slate-600 font-medium leading-relaxed uppercase tracking-widest text-justify">
+          © 2026 OK/BANKROT TECHNOLOGY. Все права защищены. <br /><br />
+          ВАЖНО: Процедура несостоятельности регулируется Федеральным законом №127-ФЗ. Осуществление банкротства влечет
+          за собой правовые последствия, предусмотренные законодательством РФ. Результат в каждом конкретном случае
+          может варьироваться. Сведения, представленные на сайте, не являются публичной офертой.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- CITY PICKER MODAL -->
+  <div id="city-modal"
+    class="fixed inset-0 z-[100] bg-white/95 backdrop-blur-3xl flex items-center justify-center p-6 hidden opacity-0 transition-opacity duration-300 pointer-events-none">
+    <button id="btn-menu-close"
+      class="absolute top-10 right-10 text-slate-400 hover:text-slate-900 p-4 transition-all hover:rotate-90 pointer-events-auto">
+      <i data-lucide="x" class="w-12 h-12 stroke-1"></i>
+    </button>
+    <div class="max-w-6xl w-full pointer-events-auto">
+      <h2 class="text-5xl font-black text-slate-900 mb-16 text-center uppercase tracking-tighter italic">Выбор
+        регионального офиса</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <button data-city="krasnodar"
+          class="city-select-btn p-12 rounded-[3.5rem] border text-left transition-all duration-500 group border-slate-100 bg-white hover:border-blue-300 hover:shadow-xl">
+          <div class="text-[10px] text-blue-500 font-black uppercase tracking-[0.3em] mb-3">Краснодарский край</div>
+          <div class="text-3xl font-black text-slate-900 mb-8 tracking-tighter">Краснодар</div>
+          <div
+            class="flex items-center gap-3 text-[11px] font-black uppercase text-slate-300 group-hover:text-blue-500 tracking-widest transition-colors">
+            <span>Подключиться</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </div>
+        </button>
+
+        <button data-city="moscow"
+          class="city-select-btn p-12 rounded-[3.5rem] border text-left transition-all duration-500 group border-slate-100 bg-white hover:border-blue-300 hover:shadow-xl">
+          <div class="text-[10px] text-blue-500 font-black uppercase tracking-[0.3em] mb-3">Московская область</div>
+          <div class="text-3xl font-black text-slate-900 mb-8 tracking-tighter">Москва</div>
+          <div
+            class="flex items-center gap-3 text-[11px] font-black uppercase text-slate-300 group-hover:text-blue-500 tracking-widest transition-colors">
+            <span>Подключиться</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </div>
+        </button>
+
+        <button data-city="kazan"
+          class="city-select-btn p-12 rounded-[3.5rem] border text-left transition-all duration-500 group border-slate-100 bg-white hover:border-blue-300 hover:shadow-xl">
+          <div class="text-[10px] text-blue-500 font-black uppercase tracking-[0.3em] mb-3">Республика Татарстан</div>
+          <div class="text-3xl font-black text-slate-900 mb-8 tracking-tighter">Казань</div>
+          <div
+            class="flex items-center gap-3 text-[11px] font-black uppercase text-slate-300 group-hover:text-blue-500 tracking-widest transition-colors">
+            <span>Подключиться</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </div>
+        </button>
+
+        <button data-city="chita"
+          class="city-select-btn p-12 rounded-[3.5rem] border text-left transition-all duration-500 group border-slate-100 bg-white hover:border-blue-300 hover:shadow-xl">
+          <div class="text-[10px] text-blue-500 font-black uppercase tracking-[0.3em] mb-3">Забайкальский край</div>
+          <div class="text-3xl font-black text-slate-900 mb-8 tracking-tighter">Чита</div>
+          <div
+            class="flex items-center gap-3 text-[11px] font-black uppercase text-slate-300 group-hover:text-blue-500 tracking-widest transition-colors">
+            <span>Подключиться</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </div>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CALL TO ACTION MODAL -->
+  <div id="callback-modal"
+    class="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-6 hidden opacity-0 transition-opacity duration-300 pointer-events-none">
+    <div class="bg-white rounded-[2.5rem] shadow-2xl p-10 max-w-md w-full relative pointer-events-auto">
+      <button id="btn-callback-close"
+        class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 p-2 transition-all">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 mx-auto">
+        <i data-lucide="phone" class="w-8 h-8"></i>
+      </div>
+      <h3 class="text-2xl font-black text-center mb-2 text-slate-900">Бесплатный аудит</h3>
+      <p class="text-center text-slate-500 mb-8 text-sm">Оставьте свой номер, и наш юрист перезвонит вам в течение 5
+        минут для консультации.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Заявка успешно отправлена!');" class="space-y-4">
+        <input type="tel" required placeholder="+7 (___) ___ __ __"
+          class="w-full px-6 py-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none text-lg text-center" />
+        <button type="submit"
+          class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 uppercase text-xs tracking-widest">
+          Оставить заявку
+        </button>
+        <p class="text-[10px] text-center text-slate-400 uppercase tracking-widest mt-4">В соответствии с 152-ФЗ</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
